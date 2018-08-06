@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Home from './pages/Home';
-import About from './pages/About';
-import Blog from './pages/Blog';
-import Galery from './pages/Galery';
-import Contact from './pages/Contact';
+// import About from './pages/About';
+// import Blog from './pages/Blog';
+// import Galery from './pages/Galery';
+// import Contact from './pages/Contact';
 
 import Navigation from './components/Navigation';
 
@@ -18,10 +18,10 @@ class App extends Component {
         <div>
           <Navigation/>
           <Route exact path="/" component={Home}></Route>
-          <Route path="/about" component={About}></Route>
+          {/* <Route path="/about" component={About}></Route>
           <Route path="/blog" component={Blog}></Route>
           <Route path="/galery" component={Galery}></Route>
-          <Route path="/contact" component={Contact}></Route>
+          <Route path="/contact" component={Contact}></Route> */}
         </div>
       </Router>
     );

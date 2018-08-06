@@ -3,7 +3,7 @@ import { Container } from 'reactstrap';
 
 class Blog extends Component {
   render() {
-    console.log('match.url = ', this.props.match.url)
+    // console.log('match.url = ', this.props.match.url)
     return (
       <div>
         <Container>

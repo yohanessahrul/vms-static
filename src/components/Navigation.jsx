@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -7,6 +7,7 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  NavLink,
   Container } from 'reactstrap';
 
 class navigation extends Component {
@@ -28,45 +29,38 @@ class navigation extends Component {
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
+        <Navbar color="light" light expand="md" fixed>
           <Container>
-          <NavbarBrand>kemodijakarta</NavbarBrand>
-          <NavbarToggler onClick={this.toogle}></NavbarToggler>
-          <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Link to="/">Home</Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/about/company">About</Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/blog">Blog</Link>
-              </NavItem>
-              <NavItem>
-                <Link to="/galery">Galery</Link>
-              </NavItem>
-            </Nav>
-          </Collapse>
+            <NavbarBrand>
+              <NavLink href="#home">
+                kemodijakarta
+              </NavLink>
+            </NavbarBrand>
+            <NavbarToggler onClick={this.toogle}></NavbarToggler>
+            <Collapse isOpen={this.state.isOpen} navbar>
+              <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <NavLink href="#home">Home</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#about">About</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#service">Service</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#blog">Blog</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#galery">Galery</NavLink>
+                </NavItem>
+                <NavItem>
+                  <NavLink href="#contact">Contact</NavLink>
+                </NavItem>
+              </Nav>
+            </Collapse>
           </Container>
         </Navbar>
-        {/* <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about/company">About</Link>
-          </li>
-          <li>
-            <Link to="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link to="/galery">Galery</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul> */}
       </div>
     );
   }
