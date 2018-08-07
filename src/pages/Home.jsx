@@ -23,10 +23,10 @@ class Home extends Component {
             <div className="section" id="about">
               <About/>
             </div>
-            <div className="section" id="service">
+            <div className="section service" id="service">
               <Service/>
             </div>
-            <div className="section" id="blog">
+            <div className="section blog" id="blog">
               <Blog/>
             </div>
             <div className="section" id="galery">

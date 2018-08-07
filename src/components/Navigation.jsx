@@ -33,7 +33,7 @@ class navigation extends Component {
           <Container>
             <NavbarBrand>
               <NavLink href="#home">
-                kemodijakarta
+                <img className="logo" src={require('../assets/img/logo-kemo.png')} alt="logo"/>
               </NavLink>
             </NavbarBrand>
             <NavbarToggler onClick={this.toogle}></NavbarToggler>
