@@ -15,12 +15,11 @@ class Home extends Component {
         <div className="scroll-container">
             <div className="section" id="home">
               <Container>
-                <div className="test"></div>
                 <h2>Home</h2>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt ex voluptatum perspiciatis provident voluptates facilis fugiat distinctio cum laborum deleniti. Facere nemo laborum inventore. Quo cum tempore ipsum blanditiis dignissimos!</p>
               </Container>
             </div>
-            <div className="section" id="about">
+            <div className="section blog" id="about">
               <About/>
             </div>
             <div className="section service" id="service">
