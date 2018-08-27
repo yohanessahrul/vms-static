@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
+import { Container, Row, Col } from 'reactstrap';
 
 class Blog extends Component {
   render() {
@@ -8,7 +8,21 @@ class Blog extends Component {
       <div>
         <Container>
           <h2>Blog</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero non alias ipsa, iusto fugit exercitationem eius quia quae in dolore, quod, quis unde itaque reprehenderit quo qui laudantium eum ullam.</p>
+          <Row>
+            <Col md="4">
+              <div className="thumb-img">
+              </div>
+              <h3>Lorem ipsum dolor, sit amet consectetur</h3>
+            </Col>
+            <Col md="4">
+              <div className="thumb-img"></div>
+              <h3>Lorem ipsum dolor, sit amet consectetur</h3>
+            </Col>
+            <Col md="4">
+              <div className="thumb-img"></div>
+              <h3>Lorem ipsum dolor, sit amet consectetur</h3>
+            </Col>
+          </Row>
         </Container>
       </div>
     );

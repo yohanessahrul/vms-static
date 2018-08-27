@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -7,17 +6,27 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  Container } from 'reactstrap';
+  Container,
+Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import FloatLogin from '../components/FloatLogin';
 
-class navigation extends Component {
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { moveUrl } from '../actions/action.url';
+
+class Navigation extends Component {
   constructor(props) {
     super(props)
     this.state = {
       isOpen : false,
       currentUrlNavigation: window.location.href,
+      showHeader: false,
+      showLogin: false,
     }
+    this.showDaftarContainer = this.showDaftarContainer.bind(this)
   }
+
   toogle = () => {
     this.setState({
       isOpen: !this.state.isOpen
@@ -26,36 +35,59 @@ class navigation extends Component {
       currentUrlNavigation: window.location.href
     })
   }
+
+  showDaftarContainer () {
+    this.setState({
+      showLogin: !this.state.showLogin
+    })
+  }
+  
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md" fixed>
+        <Navbar color="white" light expand="md">
           <Container>
             <NavbarBrand>
-              <NavLink href="#home">
+              {/* <NavLink> */}
+              <div className="logoWrap">
+
+                {/* {this.state.showHeader} */}
                 <img className="logo" src={require('../assets/img/logo-kemo.png')} alt="logo"/>
-              </NavLink>
+              </div>
+              {/* </NavLink> */}
             </NavbarBrand>
             <NavbarToggler onClick={this.toogle}></NavbarToggler>
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
-                <NavItem>
-                  <NavLink href="#home">Home</NavLink>
+                <NavItem className="daftarButton">
+                  {/* <Link style={{ background: '#2a7bc1', borderRadius: 5, color: 'white !important'}} to="/register">
+                    DAFTAR
+                  </Link> */}
+                  <div style={{ background: 'red' }}>
+                    <Button style={{marginTop: -10, marginBottom: -10, position: 'relative'}} onClick={this.showDaftarContainer}>
+                      DAFTAR
+                    </Button>
+                    {
+                      (this.state.showLogin) ?
+                        <FloatLogin/>
+                      :
+                      ''
+                    }
+                  </div>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#about">About</NavLink>
+                  <Link to="/">BERANDA</Link>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#service">Service</NavLink>
+                  <Link to="/about">TENTANG</Link>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#blog">Blog</NavLink>
+                  <Link to="/kalkulator" target="_blank">
+                    KALKULATOR MEDIS
+                  </Link>
                 </NavItem>
                 <NavItem>
-                  <NavLink href="#galery">Galery</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink href="#contact">Contact</NavLink>
+                  <Link to="/contact">KONTAK</Link>
                 </NavItem>
               </Nav>
             </Collapse>
@@ -66,4 +98,15 @@ class navigation extends Component {
   }
 }
 
-export default navigation;
+const mapStateToProps = (state) => {
+  return {
+    urls: state.urlReducer
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    moveUrl
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

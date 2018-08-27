@@ -1,28 +1,90 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import FixedButtonDaftarMobile from '../components/FixedButtonDaftarMobile';
+import Navigation from '../components/Navigation';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { moveUrl } from '../actions/action.url';
 
 class About extends Component {
+  componentWillMount(){
+    let currURL = this.props.history.location.pathname;
+    this.props.moveUrl(currURL);
+  }
+  componentDidMount(){ 
+    // console.log('route ==>', this.props.history.location.pathname)
+  }
+  componentDidUpdate() {
+    // console.log('PROPS URL==>', this.props.urls)
+  }
   render() {
     return (
       <div>
+        <div className="headerWrap">
+          <Navigation/>
+        </div>
+        <FixedButtonDaftarMobile/>
         <Container>
+          <div className="marginTop"></div>
+          {/* <h2>About</h2> */}
           <Row>
-            <Col md="4">
+            {/* <Col md="4">
               <img className="aboutLogo" src={require('../assets/img/logo-kemo-big.png')} alt="logoABout"/>
-            </Col>
-            <Col md="8">
-              <h3>About</h3>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur, incidunt nobis. Accusamus, eveniet ullam facere vero sint maxime culpa cumque assumenda deserunt voluptatibus error distinctio, temporibus nesciunt unde dolore inventore?</p>
+            </Col> */}
+            <Col>
+              <Container>
+              <Row className="animated bounceInDown">
+                <div className="aboutWrap">
+                  <h2>Tentang Kami</h2>
+                  <p>
+                    <b>Kemodijakarta.com</b> adalah sebuah layanan pendampingan perjalanan 
+                    medis yang di lahirkan untuk pasien dari daerah ketika berkunjung 
+                    ke Pusat Layanan Kesehatan di Jakarta. <b>Kemodijakarta.com</b> mengunakan 
+                    pendekatan teknologi dan manusia untuk dapat memberikan pelayanan 
+                    optimal kepada pasien sebelum dan selama berobat di Jakarta.
+                  </p> 
+                </div> 
+              </Row>
+              <Row className="animated bounceInUp">
+                <div className="aboutWrap">
+                  <h2>Tim Kami</h2>
+                  <Row>
+                    <Col className="teamList">
+                      <ul>
+                        <li>Ruben Kurniawan - <span>Pemilik Klinik Taman Anggrek</span></li>
+                        <li>Vincent Sutantiyo - <span>Kepala Pelayanan di Rumah Sakit Khusus Kanker</span></li>
+                        <li>Ricky Prasetyo - <span>Manager</span></li>
+                        <li>Sigit Setiadi - <span>Trip Planner</span></li>
+                        <li>Perawat Lisa - <span>Konsultan Perjalanan Medis</span></li>
+                        <li>Nisa - <span>Resepsionis</span></li>
+                        <li>Ali Hozi - <span>Akunting</span></li>
+                        <li>Carolina Budiman - <span>Legal & SDM</span></li>
+                        <li>Jeffry Hermanto - <span>Webdevelopment</span></li>
+                      </ul>
+                    </Col>
+                  </Row>
+                </div>
+              </Row>
+              </Container>
             </Col>
           </Row>
-          {/* <h2>About</h2>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto odit reprehenderit deserunt voluptas modi ipsam perspiciatis labore possimus porro eveniet placeat architecto, enim quisquam maxime ratione quibusdam cumque, voluptates quas!</p> */}
-          <div>
-          </div>
         </Container>
       </div>
     );
   }
 }
 
-export default About;
+const mapStateToProps = (state) => {
+  // console.log('STATEEEEEEEEEEEEEE',state)
+  return {
+    urls: state.urlReducer
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    moveUrl
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(About);

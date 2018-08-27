@@ -1,38 +1,45 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
+import ThumbnailLayanan from '../components/ThumbnailLayanan';
+import FixedButtonDaftarMobile from '../components/FixedButtonDaftarMobile';
+import Navigation from '../components/Navigation';
 
-import About from './About';
-import Service from './Service';
-import Blog from './Blog';
-import Galery from './Galery';
-import Contact from './Contact';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { moveUrl } from '../actions/action.url';
 
 class Home extends Component {
+  constructor () {
+    super()
+    this.state = {
+      showForm : false
+    }
+  }
+  componentWillMount(){
+    let currURL = this.props.history.location.pathname;
+    this.props.moveUrl(currURL); //dispatch
+  }
+  componentDidMount(){
+    // console.log('route ==>', this.props.history.location.pathname)
+  }
+  componentDidUpdate() {
+    // console.log('PROPS URL==>', this.props.urls)
+  }
   render() {
-    console.log('match.url = ', this.props.match.url)
     return (
       <div>
-        <div className="scroll-container">
-            <div className="section" id="home">
-              <Container>
-                <h2>Home</h2>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sunt ex voluptatum perspiciatis provident voluptates facilis fugiat distinctio cum laborum deleniti. Facere nemo laborum inventore. Quo cum tempore ipsum blanditiis dignissimos!</p>
-              </Container>
-            </div>
-            <div className="section blog" id="about">
-              <About/>
-            </div>
-            <div className="section service" id="service">
-              <Service/>
-            </div>
-            <div className="section blog" id="blog">
-              <Blog/>
-            </div>
-            <div className="section" id="galery">
-              <Galery/>
-            </div>
-            <div className="section" id="contact">
-              <Contact/>
+        <div className="headerWrap">
+          <Navigation/>
+        </div>
+        <FixedButtonDaftarMobile/>
+        <div>
+            <div className="section home" id="home">
+              <div className="gradientShadow"></div>
+              <div className="intro">
+                <h1 className="animated bounceInDown">Percayakan perjalanan medis anda pada kami</h1>
+                <p className="animated bounceInLeft">Kemodijakarta.com adalah sebuah layanan perjalanan medis yang di lahirkan untuk mendampingi pasien kanker dari luar Jakarta ketika berkunjung ke Pusat Layanan Kanker di Jakarta dan sekitarnya</p>
+                <ThumbnailLayanan/>
+              </div>
+              <img src={require('../assets/img/home-image.png')} alt="slideImage"/>
             </div>
         </div>
       </div>
@@ -40,4 +47,16 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  // console.log('STATEEEEEEEEEEEEEE',state)
+  return {
+    urls: state.urlReducer
+  }
+}
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({
+    moveUrl
+  }, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
