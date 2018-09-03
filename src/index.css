@@ -800,3 +800,35 @@ a.daftarbtn.nav-link {
     margin-top: -20px;
   }
 }
+
+/* alang */
+.wizardForm{
+  /* background: green; */
+}
+
+
+.fieldForm{
+  /* background: pink; */
+  margin:10px;
+}
+
+input[type="text"], input[type="email"],input[type="password"]{
+  width:100% !important;
+  /* background:yellow !important; */
+}
+
+.formContainer{ 
+  background: 'red';
+  width:'500px';
+  margin:'0 auto' 
+  }
+
+  
+  .spasiButton{
+    margin:50px 10px 0px 10px
+  }
+
+  .errorStyle{
+    font-weight: bold;
+    color: red !important
+  }

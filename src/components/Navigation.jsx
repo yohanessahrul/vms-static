@@ -14,6 +14,7 @@ import FloatLogin from '../components/FloatLogin';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { moveUrl } from '../actions/action.url';
+import history from '../history'
 
 class Navigation extends Component {
   constructor(props) {
@@ -41,6 +42,9 @@ class Navigation extends Component {
       showLogin: !this.state.showLogin
     })
   }
+  Daftar(){
+    history.push('/register')
+  }
   
   render() {
     return (
@@ -64,7 +68,7 @@ class Navigation extends Component {
                     DAFTAR
                   </Link> */}
                   <div style={{ background: 'red' }}>
-                    <Button style={{marginTop: -10, marginBottom: -10, position: 'relative'}} onClick={this.showDaftarContainer}>
+                    <Button style={{marginTop: -10, marginBottom: -10, position: 'relative'}} onClick={this.Daftar}>
                       DAFTAR
                     </Button>
                     {
