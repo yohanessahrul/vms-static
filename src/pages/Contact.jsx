@@ -44,7 +44,7 @@ class Contact extends Component {
                 <h3>Informasi lebih lanjut :</h3>
                 <p>
                   <img style={{ width: 20, marginRight: 20 }} src={require('../assets/img/gmail.png')} alt="emailogo"/>
-                  <b>info@kemodijakarta.com</b>
+                  info[at]kemodijakarta.com
                 </p>
                 <p>
                   <img style={{ width: 20, marginRight: 20 }} src={require('../assets/img/whatsapp.png')} alt="emailogo"/>
