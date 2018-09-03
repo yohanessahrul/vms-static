@@ -7,6 +7,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { moveUrl } from '../actions/action.url';
 
+import { Container, Row, Col, Button } from 'reactstrap';
+
 class Home extends Component {
   constructor () {
     super()
@@ -39,8 +41,28 @@ class Home extends Component {
                 <p className="animated bounceInLeft">Kemodijakarta.com adalah sebuah layanan perjalanan medis yang di lahirkan untuk mendampingi pasien kanker dari luar Jakarta ketika berkunjung ke Pusat Layanan Kanker di Jakarta dan sekitarnya</p>
                 <ThumbnailLayanan/>
               </div>
+              
               <img src={require('../assets/img/home-image.png')} alt="slideImage"/>
             </div>
+        </div>
+        <div className="kalkulatorIntro">
+          <Container>
+            <Row style={{ padding: '50px 0px' }}>
+              <Col lg="6">
+                <div className="animated " style={{ width: '100%', height: '300px', background: 'yellow', overflow: 'hidden', borderRadius: '20px' }}>
+                  <img style={{ width: '100%' }} src={require('../assets/img/calc-medic5.jpg')} alt="kalkulatorImageIntro"/>
+                </div>
+                <div className="clear"></div>
+              </Col>
+              <Col lg="6">
+                <h1>Hitung perjalanan medis anda</h1>
+                <p>Di datamedis anda dapat menghitung perjalanan medis anda, sehingga anda dapat terfokus pada pengobatan anda di Jakarta.</p>
+                <Button>
+                  Kalkulator Medis
+                </Button>
+              </Col>
+            </Row>
+          </Container>
         </div>
       </div>
     );
